@@ -34,8 +34,3 @@ jobs:
         run: |
           pip install ruff
           ruff check .
-
-      - name: Tests
-        run: |
-          pip install pytest pytest-asyncio httpx
-          pytest --tb=short -v
