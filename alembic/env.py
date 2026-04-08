@@ -7,7 +7,7 @@ from sqlalchemy import pool
 
 from alembic import context
 from firstAPI.contrib.BaseModel import BaseModel
-from firstAPI.contrib.repository.models import *
+from firstAPI.models import AtletaModel, CategoriaModel, CentroTreinamentoModel  # noqa: F401
 
 config = context.config
 

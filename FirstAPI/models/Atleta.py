@@ -3,6 +3,11 @@ from sqlalchemy import DateTime, Float, ForeignKey, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from firstAPI.contrib.BaseModel import BaseModel
 
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from firstAPI.models.Categoria import CategoriaModel
+    from firstAPI.models.CentroTreinamento import CentroTreinamentoModel
 
 class AtletaModel(BaseModel):
     __tablename__ = "atletas"
