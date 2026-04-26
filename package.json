@@ -1,0 +1,24 @@
+{
+  "name": "firstapi",
+  "version": "1.0.0",
+  "description": "&emsp;&emsp;O projeto proposto, se tratou de construir uma API assíncrona de competição de crossfit, tendo como modelos Atletas, Categorias, e Centros de Treinamento, utilizando o FastAPI, e outras ferramentas que se integram muito bem ao framework para auxiliar, e ao final, adicionar mais algumas funcionalidades para testar o estudo, determinação, aprendizado, e desenvolvimento de código do desafiado.<br>\r &emsp;&emsp;A construção foi um grande obstáculo para mim, que nunca havia tido nenhum contato com APIs ou algo do tipo, porém com foco e dedicação consegui passar e concluir o desafio logo em seguida, vou te contar como.<br>\r &emsp;&emsp;O primeiro passo que tive foi criar meu ambiente virtual que chamei de \"firstAPI\", e logo após instalar os pacotes necessários para começar a produção:<br>",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FelipeAlves14/FirstAPI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/FelipeAlves14/FirstAPI/issues"
+  },
+  "homepage": "https://github.com/FelipeAlves14/FirstAPI#readme"
+}

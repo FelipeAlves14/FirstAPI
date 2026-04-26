@@ -34,3 +34,9 @@ jobs:
         run: |
           pip install ruff
           ruff check .
+
+      - name: Detectar código depreciado (flake8-deprecated)
+        run: |
+          pip install flake8 flake8-deprecated
+          flake8 .
+          ! grep -rn "sqlalchemy.ext.declarative" . --include="*.py" --exclude-dir=venv --exclude-dir=lib --exclude-dir=site-packages || (echo "ERRO: Uso de código depreciado detectado! Use 'sqlalchemy.orm' em vez de 'sqlalchemy.ext.declarative'" && exit 1)

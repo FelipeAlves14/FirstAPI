@@ -4,9 +4,9 @@ from fastapi import APIRouter, HTTPException, status, Body
 from pydantic import UUID4
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.future import select
-from firstAPI.contrib.dependencies import database_dependency
-from firstAPI.schemas.Categoria import CategoriaIn, CategoriaOut
-from firstAPI.models.Categoria import CategoriaModel
+from FirstAPI.contrib.dependencies import database_dependency
+from FirstAPI.schemas.Categoria import CategoriaIn, CategoriaOut
+from FirstAPI.models.Categoria import CategoriaModel
 
 categoria_router = APIRouter()
 
