@@ -1,7 +1,7 @@
 from typing import Annotated
 
 from pydantic import UUID4, Field
-from firstAPI.contrib.BaseSchema import BaseSchema
+from FirstAPI.contrib.BaseSchema import BaseSchema
 
 class CategoriaIn(BaseSchema):
     nome: Annotated[str, Field(description="Nome da categoria", examples=["Futebol"], max_length=10)]

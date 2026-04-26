@@ -1,5 +1,5 @@
-from firstAPI.models.Atleta import AtletaModel
-from firstAPI.models.Categoria import CategoriaModel
-from firstAPI.models.CentroTreinamento import CentroTreinamentoModel
+from FirstAPI.models.Atleta import AtletaModel
+from FirstAPI.models.Categoria import CategoriaModel
+from FirstAPI.models.CentroTreinamento import CentroTreinamentoModel
 
 __all__ = ["AtletaModel", "CategoriaModel", "CentroTreinamentoModel"]

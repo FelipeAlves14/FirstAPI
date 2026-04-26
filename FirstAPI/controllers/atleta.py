@@ -6,11 +6,14 @@ from fastapi import APIRouter, HTTPException, status, Body
 from pydantic import UUID4
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.future import select
-from firstAPI.contrib.dependencies import database_dependency
-from firstAPI.schemas.Atleta import AtletaIn, AtletaOut, AtletaOutGetAll, AtletaUpdate
-from firstAPI.models.Atleta import AtletaModel
-from firstAPI.models.Categoria import CategoriaModel
-from firstAPI.models.CentroTreinamento import CentroTreinamentoModel
+from FirstAPI.contrib.dependencies import database_dependency
+from FirstAPI.schemas.Atleta import AtletaIn, AtletaOut, AtletaOutGetAll, AtletaUpdate
+from FirstAPI.models.Atleta import AtletaModel
+from FirstAPI.models.Categoria import CategoriaModel
+from FirstAPI.models.CentroTreinamento import CentroTreinamentoModel
+from sqlalchemy.orm import declarative_base
+
+Base = declarative_base()
 
 disable_installed_extensions_check()
 atleta_router = APIRouter()

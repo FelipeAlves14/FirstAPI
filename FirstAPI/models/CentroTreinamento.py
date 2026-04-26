@@ -1,10 +1,10 @@
 from sqlalchemy import Integer, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from firstAPI.contrib.BaseModel import BaseModel
+from FirstAPI.contrib.BaseModel import BaseModel
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from firstAPI.models.Atleta import AtletaModel
+    from FirstAPI.models.Atleta import AtletaModel
 
 
 class CentroTreinamentoModel(BaseModel):
