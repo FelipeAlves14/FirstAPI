@@ -11,8 +11,7 @@ from FirstAPI.schemas.Atleta import AtletaIn, AtletaOut, AtletaOutGetAll, Atleta
 from FirstAPI.models.Atleta import AtletaModel
 from FirstAPI.models.Categoria import CategoriaModel
 from FirstAPI.models.CentroTreinamento import CentroTreinamentoModel
-from sqlalchemy.ext.declarative import declarative_base
-
+from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()
 
