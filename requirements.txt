@@ -13,7 +13,7 @@ email_validator==2.1.1
 exceptiongroup==1.2.1
 fastapi==0.111.0
 fastapi-cli==0.0.4
-fastapi-pagination==0.12.24
+fastapi-pagination==0.15.12
 Flask==3.0.3
 greenlet==3.0.3
 h11==0.14.0
