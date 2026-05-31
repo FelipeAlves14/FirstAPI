@@ -38,7 +38,7 @@ jobs:
       - name: Detectar código duplicado
         run: |
           pip install pylint
-          pylint app --disable=all --enable=duplicate-code
+          pylint FirstAPI --disable=all --enable=duplicate-code
 
       - name: Detectar código depreciado (flake8-deprecated)
         run: |
