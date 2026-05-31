@@ -54,3 +54,15 @@ async def get_by_id(id: UUID4, db_session: database_dependency) -> CategoriaOut:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
                             detail="Categoria não encontrada com este ID")
     return categoria
+
+
+@atleta_router.delete("/{id}",
+                      summary="Excluir atleta",
+                      status_code=status.HTTP_204_NO_CONTENT)
+async def delete(id: UUID4, db_session: database_dependency) -> None:
+    atleta: AtletaOut = (await db_session.execute(select(AtletaModel).filter_by(id=id))).scalars().first()
+    if not atleta:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
+                            detail="Atleta não encontrado pelo ID")
+    await db_session.delete(atleta)
+    await db_session.commit()
