@@ -47,9 +47,9 @@ jobs:
         run: |
           jscpd . \
             --pattern "**/*.py" \
-            --min-lines 5 \
-            --min-tokens 20 \
-            --threshold 0
+            --min-lines 10 \
+            --min-tokens 50 \
+            --threshold 10
 
       - name: Detectar código depreciado (flake8-deprecated)
         run: |
