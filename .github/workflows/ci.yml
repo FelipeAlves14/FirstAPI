@@ -35,6 +35,11 @@ jobs:
           pip install ruff
           ruff check .
 
+      - name: Detectar código duplicado
+        run: |
+          pip install pylint
+          pylint app --disable=all --enable=duplicate-code
+
       - name: Detectar código depreciado (flake8-deprecated)
         run: |
           pip install flake8 flake8-deprecated
