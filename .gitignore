@@ -3,3 +3,4 @@ lib/
 pyvenv.cfg
 bin/
 include/
+node_modules/

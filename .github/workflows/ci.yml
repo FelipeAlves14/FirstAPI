@@ -34,6 +34,22 @@ jobs:
         run: |
           pip install ruff
           ruff check .
+      
+      - name: Setup node.js
+        uses: actions/setup-node@v3.7.0
+        with:
+          node-version: '18'
+
+      - name: instalar jscpd
+        run: npm install -g jscpd
+
+      - name: Detectar código duplicado (jscpd)
+        run: |
+          jscpd . \
+            --pattern "**/*.py" \
+            --min-lines 10 \
+            --min-tokens 50 \
+            --threshold 0
 
       - name: Detectar código depreciado (flake8-deprecated)
         run: |
