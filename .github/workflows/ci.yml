@@ -49,7 +49,7 @@ jobs:
             --pattern "**/*.py" \
             --min-lines 10 \
             --min-tokens 50 \
-            --threshold 10
+            --threshold 0
 
       - name: Detectar código depreciado (flake8-deprecated)
         run: |
