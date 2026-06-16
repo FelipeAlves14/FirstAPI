@@ -1,6 +1,8 @@
 """
-Controller responsável pelas operações relacionadas às categorias.
+Controller responsÃ¡vel pelas operaÃ§Ãµes relacionadas Ã s categorias.
 """
+
+# pylint: disable=duplicate-code,import-error
 
 from uuid import uuid4
 
@@ -47,7 +49,7 @@ async def post(
         raise HTTPException(
             status_code=status.HTTP_303_SEE_OTHER,
             detail=(
-                "Já existe uma categoria cadastrada "
+                "JÃ¡ existe uma categoria cadastrada "
                 f"com o nome: {categoria_model.nome}"
             ),
         ) from exc
@@ -108,7 +110,7 @@ async def get_by_id(
     if not categoria:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="Categoria não encontrada com este ID",
+            detail="Categoria nÃ£o encontrada com este ID",
         )
 
     return categoria

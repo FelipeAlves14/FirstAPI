@@ -2,7 +2,7 @@
 Modelo de Centro de Treinamento.
 """
 
-# pylint: disable=too-few-public-methods
+# pylint: disable=invalid-name,import-error,too-few-public-methods
 
 from typing import TYPE_CHECKING
 

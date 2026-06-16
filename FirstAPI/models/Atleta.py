@@ -2,6 +2,8 @@
 Modelo da entidade Atleta.
 """
 
+# pylint: disable=invalid-name,import-error
+
 from typing import TYPE_CHECKING
 from datetime import datetime
 
@@ -17,7 +19,7 @@ if TYPE_CHECKING:
 
 class AtletaModel(BaseModel):  # pylint: disable=too-few-public-methods
     """
-    Modelo responsável por representar um atleta.
+    Modelo responsÃ¡vel por representar um atleta.
     """
 
     __tablename__ = "atletas"

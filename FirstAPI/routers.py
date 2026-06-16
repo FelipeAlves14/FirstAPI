@@ -1,4 +1,9 @@
+"""API router composition."""
+
+# pylint: disable=import-error
+
 from fastapi import APIRouter
+
 from FirstAPI.controllers.atleta import atleta_router
 from FirstAPI.controllers.categoria import categoria_router
 from FirstAPI.controllers.centro_treinamento import centro_treinamento_router

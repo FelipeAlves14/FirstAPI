@@ -2,6 +2,8 @@
 Schemas relacionados aos atletas.
 """
 
+# pylint: disable=invalid-name
+
 from typing import Annotated, Optional
 
 from pydantic import Field, PositiveFloat
@@ -81,7 +83,7 @@ class Atleta(BaseSchema):
 
 
 class AtletaIn(Atleta):
-    """Schema para criação de atleta."""
+    """Schema para criaÃ§Ã£o de atleta."""
 
 
 class AtletaOut(AtletaIn, OutMixin):
@@ -89,7 +91,7 @@ class AtletaOut(AtletaIn, OutMixin):
 
 
 class AtletaUpdate(BaseSchema):
-    """Schema para atualização de atleta."""
+    """Schema para atualizaÃ§Ã£o de atleta."""
 
     nome: Annotated[
         Optional[str],

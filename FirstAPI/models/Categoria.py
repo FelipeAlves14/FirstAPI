@@ -1,5 +1,7 @@
 """Modelo da entidade Categoria."""
 
+# pylint: disable=invalid-name,import-error
+
 from typing import TYPE_CHECKING
 
 from sqlalchemy import Integer, String

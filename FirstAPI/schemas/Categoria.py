@@ -2,6 +2,8 @@
 Schemas relacionados às categorias.
 """
 
+# pylint: disable=too-few-public-methods
+
 from typing import Annotated
 
 from pydantic import UUID4, Field

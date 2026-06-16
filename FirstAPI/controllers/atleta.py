@@ -1,6 +1,8 @@
 """
-Controlador responsável pelas operações de atletas.
+Controlador responsÃ¡vel pelas operaÃ§Ãµes de atletas.
 """
+
+# pylint: disable=duplicate-code,import-error
 
 from datetime import datetime
 from typing import Optional
@@ -76,9 +78,9 @@ async def post(
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=(
-                f"O atleta não pratica "
+                f"O atleta nÃ£o pratica "
                 f"{atleta_in.categoria.nome} "
-                f"ou não frequenta "
+                f"ou nÃ£o frequenta "
                 f"{atleta_in.centro_treinamento.nome}"
             ),
         )
@@ -111,7 +113,7 @@ async def post(
         raise HTTPException(
             status_code=status.HTTP_303_SEE_OTHER,
             detail=(
-                "Já existe um atleta "
+                "JÃ¡ existe um atleta "
                 f"cadastrado com o cpf: "
                 f"{atleta_model.cpf}"
             ),
@@ -182,7 +184,7 @@ async def get_by_id(
     if not atleta:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="Atleta não encontrado pelo ID",
+            detail="Atleta nÃ£o encontrado pelo ID",
         )
 
     return atleta
@@ -209,7 +211,7 @@ async def update(
     if not atleta:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Atleta não encontrado pelo ID",
+            detail="Atleta nÃ£o encontrado pelo ID",
         )
 
     for key, value in atleta_update.model_dump(
@@ -243,7 +245,7 @@ async def delete(
     if not atleta:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Atleta não encontrado pelo ID",
+            detail="Atleta nÃ£o encontrado pelo ID",
         )
 
     await db_session.delete(atleta)

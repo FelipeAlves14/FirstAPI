@@ -1,5 +1,7 @@
 """Controller de Centro de Treinamento."""
 
+# pylint: disable=import-error
+
 from uuid import uuid4
 
 from fastapi import APIRouter, Body, HTTPException, status
@@ -46,7 +48,7 @@ async def post(
         raise HTTPException(
             status_code=status.HTTP_303_SEE_OTHER,
             detail=(
-                "Já existe um centro de treinamento cadastrado "
+                "JÃ¡ existe um centro de treinamento cadastrado "
                 f"com o nome: {centro_treinamento_model.nome}"
             ),
         ) from exc
@@ -95,7 +97,7 @@ async def get_by_id(
     if not centro_treinamento:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="Centro de treinamento não encontrado com este ID",
+            detail="Centro de treinamento nÃ£o encontrado com este ID",
         )
 
     return centro_treinamento

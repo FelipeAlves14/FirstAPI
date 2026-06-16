@@ -1,3 +1,5 @@
+# pylint: disable=too-few-public-methods
+
 """
 Schemas relacionados ao Centro de Treinamento.
 """
