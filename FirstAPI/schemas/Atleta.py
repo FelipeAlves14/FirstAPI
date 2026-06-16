@@ -9,7 +9,7 @@ from typing import Annotated, Optional
 from pydantic import Field, PositiveFloat
 
 from FirstAPI.contrib.BaseSchema import BaseSchema, OutMixin
-from FirstAPI.schemas.categoria import CategoriaIn
+from FirstAPI.schemas.Categoria import CategoriaIn
 from FirstAPI.schemas.centro_treinamento import CentroTreinamentoAtleta
 
 
@@ -83,7 +83,7 @@ class Atleta(BaseSchema):
 
 
 class AtletaIn(Atleta):
-    """Schema para criaÃ§Ã£o de atleta."""
+    """Schema para criaÃƒÂ§ÃƒÂ£o de atleta."""
 
 
 class AtletaOut(AtletaIn, OutMixin):
@@ -91,7 +91,7 @@ class AtletaOut(AtletaIn, OutMixin):
 
 
 class AtletaUpdate(BaseSchema):
-    """Schema para atualizaÃ§Ã£o de atleta."""
+    """Schema para atualizaÃƒÂ§ÃƒÂ£o de atleta."""
 
     nome: Annotated[
         Optional[str],

@@ -1,8 +1,8 @@
 """
-Schemas relacionados às categorias.
+Schemas relacionados Ã s categorias.
 """
 
-# pylint: disable=too-few-public-methods
+# pylint: disable=invalid-name,too-few-public-methods
 
 from typing import Annotated
 
@@ -12,7 +12,7 @@ from FirstAPI.contrib.BaseSchema import BaseSchema
 
 
 class CategoriaIn(BaseSchema):
-    """Schema para criação de categorias."""
+    """Schema para criaÃ§Ã£o de categorias."""
 
     nome: Annotated[
         str,
