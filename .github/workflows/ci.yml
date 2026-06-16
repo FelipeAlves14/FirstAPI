@@ -34,6 +34,11 @@ jobs:
         run: |
           pip install ruff
           ruff check .
+
+      - name: Pylint
+        run: |
+          pip install pylint
+          python -m pylint FirstAPI
       
       - name: Setup node.js
         uses: actions/setup-node@v3.7.0
