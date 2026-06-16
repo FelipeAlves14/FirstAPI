@@ -1,4 +1,9 @@
+"""Shared FastAPI dependency aliases."""
+
+# pylint: disable=invalid-name,import-error
+
 from typing import Annotated
+
 from fastapi import Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
