@@ -58,4 +58,3 @@ Werkzeug==3.0.3
 flake8==7.0.0
 flake8-deprecated
 pylint==3.0.0
-pylint-flask==0.7.0
