@@ -8,7 +8,7 @@ from datetime import datetime
 from typing import Optional
 from uuid import uuid4
 
-from fastapi import APIRouter, Body, HTTPException, status
+from fastapi import APIRouter, HTTPException, status
 from fastapi_pagination import LimitOffsetPage, paginate
 from fastapi_pagination.utils import disable_installed_extensions_check
 from pydantic import UUID4
