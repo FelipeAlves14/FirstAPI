@@ -38,9 +38,7 @@ async def post(
             **categoria_in.model_dump(),
         )
 
-        categoria_model = CategoriaModel(
-            **categoria_out.model_dump()
-        )
+        categoria_model = CategoriaModel(**categoria_out.model_dump())
 
         db_session.add(categoria_model)
         await db_session.commit()
@@ -70,13 +68,7 @@ async def get(
     Retorna todas as categorias cadastradas.
     """
     categorias: list[CategoriaOut] = (
-        (
-            await db_session.execute(
-                select(CategoriaModel)
-            )
-        )
-        .scalars()
-        .all()
+        (await db_session.execute(select(CategoriaModel))).scalars().all()
     )
 
     return paginate(categorias)
@@ -96,13 +88,7 @@ async def get_by_id(
     Retorna uma categoria pelo ID.
     """
     categoria: CategoriaOut = (
-        (
-            await db_session.execute(
-                select(CategoriaModel).filter_by(
-                    id=categoria_id
-                )
-            )
-        )
+        (await db_session.execute(select(CategoriaModel).filter_by(id=categoria_id)))
         .scalars()
         .first()
     )

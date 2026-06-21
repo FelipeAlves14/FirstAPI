@@ -41,16 +41,14 @@ async def get_atleta_by_id(
     Busca um atleta pelo ID.
     """
     return (
-        await db_session.execute(
-            select(AtletaModel).filter_by(id=atleta_id)
-        )
-    ).scalars().first()
+        (await db_session.execute(select(AtletaModel).filter_by(id=atleta_id)))
+        .scalars()
+        .first()
+    )
 
 
 @atleta_router.post(
-    "/",
-    summary="Criar novo atleta",
-    status_code=status.HTTP_201_CREATED
+    "/", summary="Criar novo atleta", status_code=status.HTTP_201_CREATED
 )
 async def post(
     db_session: database_dependency,
@@ -60,20 +58,26 @@ async def post(
     Cria um novo atleta.
     """
     categoria = (
-        await db_session.execute(
-            select(CategoriaModel).filter_by(
-                nome=atleta_in.categoria.nome
+        (
+            await db_session.execute(
+                select(CategoriaModel).filter_by(nome=atleta_in.categoria.nome)
             )
         )
-    ).scalars().first()
+        .scalars()
+        .first()
+    )
 
     centro_treinamento = (
-        await db_session.execute(
-            select(CentroTreinamentoModel).filter_by(
-                nome=atleta_in.centro_treinamento.nome
+        (
+            await db_session.execute(
+                select(CentroTreinamentoModel).filter_by(
+                    nome=atleta_in.centro_treinamento.nome
+                )
             )
         )
-    ).scalars().first()
+        .scalars()
+        .first()
+    )
 
     if not categoria or not centro_treinamento:
         raise HTTPException(
@@ -103,9 +107,7 @@ async def post(
         )
 
         atleta_model.categoria_id = categoria.pk_id
-        atleta_model.centro_treinamento_id = (
-            centro_treinamento.pk_id
-        )
+        atleta_model.centro_treinamento_id = centro_treinamento.pk_id
 
         db_session.add(atleta_model)
         await db_session.commit()
@@ -114,19 +116,14 @@ async def post(
         raise HTTPException(
             status_code=status.HTTP_303_SEE_OTHER,
             detail=(
-                "JÃ¡ existe um atleta "
-                f"cadastrado com o cpf: "
-                f"{atleta_model.cpf}"
+                "JÃ¡ existe um atleta " f"cadastrado com o cpf: " f"{atleta_model.cpf}"
             ),
         ) from exc
 
     return atleta_out
 
 
-@atleta_router.get(
-    "/",
-    summary="Consultar atletas"
-)
+@atleta_router.get("/", summary="Consultar atletas")
 async def get(
     db_session: database_dependency,
     nome: Optional[str] = None,
@@ -138,36 +135,25 @@ async def get(
     atletas: list[AtletaOutGetAll] = []
 
     if nome:
-        resultado = await db_session.execute(
-            select(AtletaModel).filter_by(nome=nome)
-        )
+        resultado = await db_session.execute(select(AtletaModel).filter_by(nome=nome))
 
         for atleta in resultado.scalars().all():
             atletas.append(atleta)
 
     if cpf:
-        resultado = await db_session.execute(
-            select(AtletaModel).filter_by(cpf=cpf)
-        )
+        resultado = await db_session.execute(select(AtletaModel).filter_by(cpf=cpf))
 
         for atleta in resultado.scalars().all():
             if atleta not in atletas:
                 atletas.append(atleta)
 
     if not nome and not cpf:
-        atletas = (
-            await db_session.execute(
-                select(AtletaModel)
-            )
-        ).scalars().all()
+        atletas = (await db_session.execute(select(AtletaModel))).scalars().all()
 
     return paginate(atletas)
 
 
-@atleta_router.get(
-    "/{atleta_id}",
-    summary="Consultar atleta pelo ID"
-)
+@atleta_router.get("/{atleta_id}", summary="Consultar atleta pelo ID")
 async def get_by_id(
     atleta_id: UUID4,
     db_session: database_dependency,
@@ -189,10 +175,7 @@ async def get_by_id(
     return atleta
 
 
-@atleta_router.patch(
-    "/{atleta_id}",
-    summary="Atualizar atleta pelo ID"
-)
+@atleta_router.patch("/{atleta_id}", summary="Atualizar atleta pelo ID")
 async def update(
     atleta_id: UUID4,
     db_session: database_dependency,
@@ -212,9 +195,7 @@ async def update(
             detail=ATLETA_NAO_ENCONTRADO,
         )
 
-    for key, value in atleta_update.model_dump(
-        exclude_unset=True
-    ).items():
+    for key, value in atleta_update.model_dump(exclude_unset=True).items():
         setattr(atleta, key, value)
 
     await db_session.commit()
