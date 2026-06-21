@@ -30,6 +30,8 @@ disable_installed_extensions_check()
 
 atleta_router = APIRouter()
 
+ATLETA_NAO_ENCONTRADO = "Atleta não encontrado pelo ID"
+
 
 async def get_atleta_by_id(
     atleta_id: UUID4,
@@ -48,12 +50,11 @@ async def get_atleta_by_id(
 @atleta_router.post(
     "/",
     summary="Criar novo atleta",
-    status_code=status.HTTP_201_CREATED,
-    response_model=AtletaOut,
+    status_code=status.HTTP_201_CREATED
 )
 async def post(
     db_session: database_dependency,
-    atleta_in: AtletaIn = Body(...),
+    atleta_in: AtletaIn,
 ) -> AtletaOut:
     """
     Cria um novo atleta.
@@ -124,8 +125,7 @@ async def post(
 
 @atleta_router.get(
     "/",
-    summary="Consultar atletas",
-    response_model=LimitOffsetPage[AtletaOutGetAll],
+    summary="Consultar atletas"
 )
 async def get(
     db_session: database_dependency,
@@ -166,8 +166,7 @@ async def get(
 
 @atleta_router.get(
     "/{atleta_id}",
-    summary="Consultar atleta pelo ID",
-    response_model=AtletaOut,
+    summary="Consultar atleta pelo ID"
 )
 async def get_by_id(
     atleta_id: UUID4,
@@ -184,7 +183,7 @@ async def get_by_id(
     if not atleta:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="Atleta nÃ£o encontrado pelo ID",
+            detail=ATLETA_NAO_ENCONTRADO,
         )
 
     return atleta
@@ -192,13 +191,12 @@ async def get_by_id(
 
 @atleta_router.patch(
     "/{atleta_id}",
-    summary="Atualizar atleta pelo ID",
-    response_model=AtletaOut,
+    summary="Atualizar atleta pelo ID"
 )
 async def update(
     atleta_id: UUID4,
     db_session: database_dependency,
-    atleta_update: AtletaUpdate = Body(...),
+    atleta_update: AtletaUpdate,
 ) -> AtletaOut:
     """
     Atualiza um atleta pelo ID.
@@ -211,7 +209,7 @@ async def update(
     if not atleta:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Atleta nÃ£o encontrado pelo ID",
+            detail=ATLETA_NAO_ENCONTRADO,
         )
 
     for key, value in atleta_update.model_dump(
@@ -245,7 +243,7 @@ async def delete(
     if not atleta:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Atleta nÃ£o encontrado pelo ID",
+            detail=ATLETA_NAO_ENCONTRADO,
         )
 
     await db_session.delete(atleta)
