@@ -12,4 +12,6 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 class BaseModel(DeclarativeBase):
     """Base ORM model with a UUID primary key."""
 
-    id: Mapped[UUID] = mapped_column(PG_UUID(as_uuid=True), default=uuid4, nullable=False)
+    id: Mapped[UUID] = mapped_column(
+        PG_UUID(as_uuid=True), default=uuid4, nullable=False
+    )

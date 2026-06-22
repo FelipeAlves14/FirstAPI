@@ -67,10 +67,8 @@ async def get(
 ) -> LimitOffsetPage[CentroTreinamentoOut]:
     """Lista todos os centros de treinamento."""
     centros_treinamento = (
-        await db_session.execute(
-            select(CentroTreinamentoModel)
-        )
-    ).scalars().all()
+        (await db_session.execute(select(CentroTreinamentoModel))).scalars().all()
+    )
 
     return paginate(centros_treinamento)
 
@@ -87,12 +85,14 @@ async def get_by_id(
 ) -> CentroTreinamentoOut:
     """Busca um centro de treinamento pelo ID."""
     centro_treinamento = (
-        await db_session.execute(
-            select(CentroTreinamentoModel).filter_by(
-                id=centro_treinamento_id
+        (
+            await db_session.execute(
+                select(CentroTreinamentoModel).filter_by(id=centro_treinamento_id)
             )
         )
-    ).scalars().first()
+        .scalars()
+        .first()
+    )
 
     if not centro_treinamento:
         raise HTTPException(

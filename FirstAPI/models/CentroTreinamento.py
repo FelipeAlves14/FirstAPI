@@ -43,6 +43,4 @@ class CentroTreinamentoModel(BaseModel):  # pylint: disable=too-few-public-metho
         nullable=False,
     )
 
-    atleta: Mapped["AtletaModel"] = relationship(
-        back_populates="centro_treinamento"
-    )
+    atleta: Mapped["AtletaModel"] = relationship(back_populates="centro_treinamento")

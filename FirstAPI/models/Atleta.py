@@ -43,9 +43,7 @@ class AtletaModel(BaseModel):  # pylint: disable=too-few-public-methods
         lazy="selectin",
     )
 
-    categoria_id: Mapped[int] = mapped_column(
-        ForeignKey("categorias.pk_id")
-    )
+    categoria_id: Mapped[int] = mapped_column(ForeignKey("categorias.pk_id"))
 
     centro_treinamento: Mapped["CentroTreinamentoModel"] = relationship(
         back_populates="atleta",
